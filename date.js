@@ -25,17 +25,17 @@ getJSON(target_url,
             var diff_date = Date.now() - commit_date.getTime();
             var hours = Math.floor(diff_date / (1000 * 60 * 60));
             var date_text = "";
-            if (hours == 0) {
-                date_text = "Меньше часа назад";
-            }
-            else if (hours == 1) {
-                date_text = "1 час назад";
-            }
-            else if (hours > 1 && hours < 5) {
-                date_text = hours + " часа назад";
+            if (hours < 24) {
+                if (hours == 0) { date_text = "меньше часа назад"; } else
+                if (hours == 1) { date_text = "час назад"; } else
+                if (hours > 1 && hours < 5) { date_text = hours + " часа назад"; }
+                else { date_text = hours + " часов назад"; }
             }
             else {
-                date_text = hours + " часов назад";
+                var days = Math.floor(hours / 24);
+                if (days == 1) { date_text = "день назад"; } else
+                if (days > 1 && days < 5) { date_text = days + " дня назад"; }
+                else { date_text = days + " дней назад"}
             }
             document.getElementById('last_update_label').innerHTML += date_text;
         }
