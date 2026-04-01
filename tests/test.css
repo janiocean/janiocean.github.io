@@ -1,0 +1,9 @@
+.sleep {
+    animation: flip 0.8s infinite ease;
+}
+
+@keyframes flip {
+    0% { scale: -1 1}
+    50% { scale: 1 1}
+    100% { scale: -1 1}
+}
