@@ -35,8 +35,18 @@ function linear(timeFraction) {
     return timeFraction;
 }
 
+
 animate({
-    duration: 500,
+    duration: 5000,
+    timing: linear,
+    draw(progress) {
+        myavatar.style.scale = (1 + Math.sin(progress * 10) * 0.05) + " " + (1 - Math.sin(progress * 10) * 0.05);
+    }
+});
+
+
+myavatar.onclick = function() {animate({
+    duration: 1000,
     timing: easeInOutBack,
     draw(progress) {
         myavatar.style.transform = "skew(" + progress * 30 + "deg)";
@@ -64,10 +74,10 @@ animate({
             },
             animateafter() {
                 animate({
-                    duration: 2000,
+                    duration: 1200,
                     timing: linear,
                     draw(progress) {
-                        myavatar.style.transform = "skew(" + (-30 + Math.sin(progress * 12) * 5) + "deg)";
+                        myavatar.style.transform = "skew(" + (-30 + Math.sin(progress * 20) * 5) + "deg)";
                         myavatar.style.scale = (0.8 + progress * 0.2) + " " + (1.3 - progress * 0.3)
                     },
                     animateafter() {
@@ -78,13 +88,23 @@ animate({
                                 if (progress > 0.1) {
                                     myavatar.src = "frames/sleep_4.webp";
                                 }
-                                myavatar.style.transform = "skew(" + (-30 + Math.sin(12) * 5 + progress * 40) + "deg)";
+                                myavatar.style.transform = "skew(" + (-30 + Math.sin(20) * 5 + progress * 40) + "deg)";
                                 myavatar.style.scale = (1 + progress * 0.1) + " " + (1 - progress * 0.1);
+                            },
+                            animateafter() {
+                                animate({
+                                    duration: 800,
+                                    timing: easeInOutBack,
+                                    draw(progress) {
+                                        myavatar.style.transform = "skew(" + (10 + Math.sin(20) * 5) * (1 - progress) + "deg)";
+                                        myavatar.style.scale = (1.1 + progress * 0.2) + " " + (0.9 - progress * 0.15);
+                                    }
+                                })
                             }
                         });
-                    }
+                    },
                 })
             }
         });
     }
-})
+});};
