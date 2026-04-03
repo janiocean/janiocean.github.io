@@ -87,43 +87,78 @@ let awake_loop = function() {animate({
 });};
 
 
-myavatar.onclick = function () {
-    cancelAnimationFrame(ANIMATION_ID);
-    animate({
-    duration: 3000,
-    draw(progress) {
-        progress = progress * 5;
+function wakeup_sequence(progress) {
+    progress = progress * 5;
 
-        if (progress < 1) {
-            progress = map(0, 1, progress);
-            myavatar.style.transform = "skew(" + (easeInBack(progress) * 20) + "deg)";
-            if (progress < 0.8)
-                switchFrame(frames.sleep_still);
-            else
-                switchFrame(frames.sleep_stratch);
-            
-        }
-        else if (progress < 2) {
-            progress = map(1, 2, progress);
-            myavatar.style.transform = "skew(" + (20 -easeInBack(progress) * 30) + "deg)";
-        }
-        else if (progress < 4) {
-            progress = map(2, 4, progress);
-            switchFrame(frames.awake_yawn);
-            myavatar.style.transform = "skew(" + (-5 - 5 * Math.cos(progress * 4 * Math.PI)) + "deg)";
-        }
-        else {
-            progress = map(4, 5, progress);
-            myavatar.style.transform = "skew(" + ((-5 - 5 * Math.cos(Math.PI * 4)) * (1 - easeOutBack(progress))) + "deg";
-            if (progress > 0.1)
-                switchFrame(frames.awake_still);
-        }
-        // TODO: Improve animation not only with skew animation pleEASE
-        // myavatar.style.transform = "skew(" + progress * 30 + "deg)";
-        // myavatar.style.scale = (progress * 0.1 + 1) + " " + (1 - progress * 0.1);
-    },
-    after: awake_loop
-});};
+    if (progress < 1) {
+        progress = map(0, 1, progress);
+        myavatar.style.transform = "skew(" + (easeInBack(progress) * 20) + "deg)";
+        if (progress < 0.8)
+            switchFrame(frames.sleep_still);
+        else
+            switchFrame(frames.sleep_stratch);
+        
+    }
+    else if (progress < 2) {
+        progress = map(1, 2, progress);
+        myavatar.style.transform = "skew(" + (20 -easeInBack(progress) * 30) + "deg)";
+    }
+    else if (progress < 4) {
+        progress = map(2, 4, progress);
+           switchFrame(frames.awake_yawn);
+        myavatar.style.transform = "skew(" + (-5 - 5 * Math.cos(progress * 4 * Math.PI)) + "deg)";
+    }
+    else {
+        progress = map(4, 5, progress);
+        myavatar.style.transform = "skew(" + ((-5 - 5 * Math.cos(Math.PI * 4)) * (1 - easeOutBack(progress))) + "deg";
+        if (progress > 0.1)
+            switchFrame(frames.awake_still);
+    }
+    // TODO: Improve animation not only with skew animation pleEASE
+    // myavatar.style.transform = "skew(" + progress * 30 + "deg)";
+    // myavatar.style.scale = (progress * 0.1 + 1) + " " + (1 - progress * 0.1);
+}
+
+function lay_sequence(progress) {
+    progress = progress * 2;
+
+    if (progress < 1) {
+        progress = map(0, 1, progress);
+        x = 1 - 1 * easeInBack(progress);
+    }
+    else {
+        switchFrame(frames.sleep_still);
+        progress = map(1, 2, progress);
+        x = 1 * easeOutBack(progress);
+    }
+    myavatar.style.scale = x + " 1";
+}
+
+let state = "sleep";
+
+function switch_state() {
+    if (state == "sleep") {
+        state = "awake";
+        cancelAnimationFrame(ANIMATION_ID);
+        animate({
+            duration: 3000,
+            draw: wakeup_sequence,
+            after: awake_loop
+        })
+    }
+    else {
+        state = "sleep";
+        cancelAnimationFrame(ANIMATION_ID);
+        animate({
+            duration: 1000,
+            draw: lay_sequence,
+            after: sleep_loop
+        })
+    }
+}
+
+
+myavatar.onclick = function () {switch_state()};
 
 
 sleep_loop();
