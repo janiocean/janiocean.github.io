@@ -1,77 +1,145 @@
-const SECTIONS = {
-    sleep: ["sleep"],
-    morning: ["shower", "breakfast", "yoga"],
-    street: ["skate", "metro", "walk"],
-    study: ["study", "laptop", "craft", "book"],
-    lunch: ["lunch", "park", "cafe"],
-    evening: ["bicycle", "cafe", "art", "guitar"],
-    lateEvening: ["cinema", "dance", "climb", "games"],
+function easeInOutQuart(value) {
+    return value < 0.5 ? 8 * value * value * value * value : 1 - Math.pow(-2 * value + 2, 4) / 2;
 }
 
-let machine = {
-    playSection({day, section}) {
-        if (day < 5) { // working days
-            console.log(`DAY ${day + 1} TIME ${section} - ${this.workingSections[section][0]}`);
-            section += 1;
-            if (section >= this.workingSections.length) {
-                day = (day + 1) % 7;
-                section = 0;
-            }
-        }
-        else { // weekend days
-            console.log(`DAY ${day + 1} TIME ${section} - ${this.weekendSections[section][0]}`);
-            section += 1;
-            if (section >= this.weekendSections.length) {
-                day = (day + 1) % 7;
-                section = 0;
-            }
-        }
-        this.playSection({day, section});
-    },
-    start() {
-        this.dayOfTheWeek = 0;
-        this.sectionID = 0;
-        this.playState();
-    },
-    nextState() {
-        this.sectionID += 1;
-        if (this.sectionID == this.collectionOfSectionSequence[this.collectionID].length) {
-            this.sectionID = 0;
-            this.dayOfTheWeek = (this.dayOfTheWeek + 1) % 7;
-            this.collectionID = (this.dayOfTheWeek >= 5) ? 1 : 0;
-        }
-        if (this.dayOfTheWeek == 6 && this.sectionID == 3) return;//TODO remove
-        this.playState();
-    },
-    playState() {
-        let range = this.collectionOfSectionSequence[this.collectionID][this.sectionID].length;
-        console.log(`DAY ${this.dayOfTheWeek + 1} TIME ${this.sectionID} - ${this.collectionOfSectionSequence[this.collectionID][this.sectionID][Math.floor(Math.random() * range)]}`);
-        this.nextState();
-    },
-    sectionID: 0,
-    dayOfTheWeek: 0,
-    collectionID: 0,
-    workingSections: [
-        SECTIONS.morning,
-        SECTIONS.street,
-        SECTIONS.study,
-        SECTIONS.lunch,
-        SECTIONS.study,
-        SECTIONS.street,
-        SECTIONS.evening,
-        SECTIONS.lateEvening,
-        SECTIONS.sleep,
-    ],
-    weekendSections: [
-        SECTIONS.morning,
-        SECTIONS.street,
-        SECTIONS.evening,
-        SECTIONS.street,
-        SECTIONS.sleep,
-    ],
+function easeInOutBack(value) {
+    const c1 = 1.70158;
+    const c2 = c1 * 1.525;
+
+    return value < 0.5
+    ? (Math.pow(2 * value, 2) * ((c2 + 1) * 2 * value - c2)) / 2
+    : (Math.pow(2 * value - 2, 2) * ((c2 + 1) * (value * 2 - 2) + c2) + 2) / 2;
 }
-    
+
+function easeInBack(value) {
+    const c1 = 1.70158;
+    const c3 = c1 + 1;
+
+    return c3 * value * value * value - c1 * value * value;
+}
+
+function easeOutBack(value) {
+    const c1 = 1.70158;
+    const c3 = c1 + 1;
+
+    return 1 + c3 * Math.pow(value - 1, 3) + c1 * Math.pow(value - 1, 2);
+}
+
+function map(min, max, value) {
+    return (value - min) / (max - min);
+}
+
+const frames = {
+    sleep_still: "frames/sleep_1.webp",
+    sleep_stratch: "frames/sleep_2.webp",
+    awake_yawn: "frames/sleep_3.webp",
+    awake_still: "frames/sleep_4.webp",
+}
+
+function switchFrame(frame) {
+    if (myavatar.src == frame) return;
+    myavatar.src = frame;
+}
 
 
-machine.start() // start the process and initialize
-// machine.nextState() // automaticly analize current timezone
+// MAIN FUNCTION LOOP
+function playAvatarAnimationCycle() {
+    // STATES ANIMATION
+    const STATES_SEQUENCE = [
+        {
+            duration: 1000,
+            draw (progress) { // SLEEP LOOP
+                switchFrame(frames.sleep_still);
+                progress = easeInOutBack(progress);
+                myavatar.style.scale = (1 + Math.sin(progress * Math.PI) * 0.05) + " " + (1 - Math.sin(progress * Math.PI) * 0.05);
+            }
+        },
+        {
+            duration: 3000,
+            draw (progress) { // WAKE UP
+                progress = progress * 5;
+
+                if (progress < 1) {
+                    progress = map(0, 1, progress);
+                    myavatar.style.transform = "skew(" + (easeInBack(progress) * 20) + "deg)";
+                    if (progress < 0.8)
+                        switchFrame(frames.sleep_still);
+                    else
+                        switchFrame(frames.sleep_stratch);
+                    
+                }
+                else if (progress < 2) {
+                    progress = map(1, 2, progress);
+                    myavatar.style.transform = "skew(" + (20 -easeInBack(progress) * 30) + "deg)";
+                }
+                else if (progress < 4) {
+                    progress = map(2, 4, progress);
+                    switchFrame(frames.awake_yawn);
+                    myavatar.style.transform = "skew(" + (-5 - 5 * Math.cos(progress * 4 * Math.PI)) + "deg)";
+                }
+                else {
+                    progress = map(4, 5, progress);
+                    myavatar.style.transform = "skew(" + ((-5 - 5 * Math.cos(Math.PI * 4)) * (1 - easeOutBack(progress))) + "deg";
+                    if (progress > 0.1)
+                        switchFrame(frames.awake_still);
+                }
+            }
+        },
+        {
+            duration: 1000,
+            draw(progress) { // AWAKE LOOP
+                switchFrame(frames.awake_still);
+                progress = easeInOutBack(progress);
+                myavatar.style.scale = (1 + Math.sin(progress * Math.PI) * 0.05) + " " + (1 - Math.sin(progress * Math.PI) * 0.05);
+            }
+        },
+        {
+            duration: 1000,
+            draw(progress) { // GO TO SLEEP
+                progress = progress * 2;
+
+                if (progress < 1) {
+                    progress = map(0, 1, progress);
+                    x = 1 - 1 * easeInBack(progress);
+                }
+                else {
+                    switchFrame(frames.sleep_still);
+                    progress = map(1, 2, progress);
+                    x = 1 * easeOutBack(progress);
+                }
+                myavatar.style.scale = x + " 1";
+            }
+        },
+    ];
+    let currentStateID = 0;
+
+    function startState() {
+        // Calculate new state
+        let myState = STATES_SEQUENCE[currentStateID];
+
+        let start = performance.now();
+
+        requestAnimationFrame(function animateState(time) {
+            let progress = (time - start) / myState.duration;
+            if (progress > 1) progress = 1;
+
+            myState.draw(progress);
+
+            if (progress < 1)
+                requestAnimationFrame(animateState);
+            else {
+                // Update current Days
+                currentStateID = currentStateID + 1;
+                if (currentStateID >= STATES_SEQUENCE.length) {
+                    currentStateID = 0;
+                    // next Day
+                }
+
+                startState();
+            }
+        });
+    };
+    startState();
+};
+
+playAvatarAnimationCycle();
