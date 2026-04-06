@@ -44,18 +44,17 @@ function switchFrame(frame) {
 
 // MAIN FUNCTION LOOP
 function playAvatarAnimationCycle() {
-    // STATES ANIMATION
-    const STATES_SEQUENCE = [
-        {
-            duration: 5000,
-            draw (progress) { // SLEEP LOOP
+    const SEQUENCE_LIBRARY = {
+        SLEEP_LOOP: {
+            duration: 3000,
+            draw (progress) {
                 switchFrame(frames.sleep_still);
-                progress = progress % (1 / 5) * 5;
+                progress = progress % (1 / 3) * 3;
                 progress = easeInOutBack(progress);
                 myavatar.style.scale = (1 + Math.sin(progress * Math.PI) * 0.05) + " " + (1 - Math.sin(progress * Math.PI) * 0.05);
             }
         },
-        {
+        WAKE_UP: {
             duration: 3000,
             draw (progress) { // WAKE UP
                 progress = progress * 5;
@@ -86,32 +85,43 @@ function playAvatarAnimationCycle() {
                 }
             }
         },
-        {
-            duration: 5000,
+        AWAKE_LOOP: {
+            duration: 3000,
             draw(progress) { // AWAKE LOOP
                 switchFrame(frames.awake_still);
-                progress = progress % (1 / 5) * 5;
+                progress = progress % (1 / 3) * 3;
                 progress = easeInOutBack(progress);
                 myavatar.style.scale = (1 + Math.sin(progress * Math.PI) * 0.05) + " " + (1 - Math.sin(progress * Math.PI) * 0.05);
             }
         },
-        {
+        GO_TO_SLEEP: {
             duration: 1000,
             draw(progress) { // GO TO SLEEP
                 progress = progress * 2;
+                let x, y;
 
                 if (progress < 1) {
+                    switchFrame(frames.awake_still);
                     progress = map(0, 1, progress);
                     x = 1 - 1 * easeInBack(progress);
+                    y = 1 - 0.3 * easeInBack(progress);
                 }
                 else {
                     switchFrame(frames.sleep_still);
                     progress = map(1, 2, progress);
                     x = 1 * easeOutBack(progress);
+                    y = 0.9 + 0.1 * easeOutBack(progress);
                 }
-                myavatar.style.scale = x + " 1";
+                myavatar.style.scale = x + " " + y;
             }
-        },
+        }
+    };
+    // STATES ANIMATION
+    const STATES_SEQUENCE = [
+        SEQUENCE_LIBRARY.GO_TO_SLEEP,
+        SEQUENCE_LIBRARY.SLEEP_LOOP,
+        SEQUENCE_LIBRARY.WAKE_UP,
+        SEQUENCE_LIBRARY.AWAKE_LOOP,
     ];
     let currentStateID = 0;
 
