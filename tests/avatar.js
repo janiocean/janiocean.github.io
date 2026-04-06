@@ -9,6 +9,25 @@ const SECTIONS = {
 }
 
 let machine = {
+    playSection({day, section}) {
+        if (day < 5) { // working days
+            console.log(`DAY ${day + 1} TIME ${section} - ${this.workingSections[section][0]}`);
+            section += 1;
+            if (section >= this.workingSections.length) {
+                day = (day + 1) % 7;
+                section = 0;
+            }
+        }
+        else { // weekend days
+            console.log(`DAY ${day + 1} TIME ${section} - ${this.weekendSections[section][0]}`);
+            section += 1;
+            if (section >= this.weekendSections.length) {
+                day = (day + 1) % 7;
+                section = 0;
+            }
+        }
+        this.playSection({day, section});
+    },
     start() {
         this.dayOfTheWeek = 0;
         this.sectionID = 0;
@@ -32,25 +51,23 @@ let machine = {
     sectionID: 0,
     dayOfTheWeek: 0,
     collectionID: 0,
-    collectionOfSectionSequence: [
-        [ // working
-            SECTIONS.morning,
-            SECTIONS.street,
-            SECTIONS.study,
-            SECTIONS.lunch,
-            SECTIONS.study,
-            SECTIONS.street,
-            SECTIONS.evening,
-            SECTIONS.lateEvening,
-            SECTIONS.sleep,
-        ],
-        [ // weekend
-            SECTIONS.morning,
-            SECTIONS.street,
-            SECTIONS.evening,
-            SECTIONS.street,
-            SECTIONS.sleep,
-        ],
+    workingSections: [
+        SECTIONS.morning,
+        SECTIONS.street,
+        SECTIONS.study,
+        SECTIONS.lunch,
+        SECTIONS.study,
+        SECTIONS.street,
+        SECTIONS.evening,
+        SECTIONS.lateEvening,
+        SECTIONS.sleep,
+    ],
+    weekendSections: [
+        SECTIONS.morning,
+        SECTIONS.street,
+        SECTIONS.evening,
+        SECTIONS.street,
+        SECTIONS.sleep,
     ],
 }
     
