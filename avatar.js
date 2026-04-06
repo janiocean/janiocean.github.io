@@ -30,10 +30,10 @@ function map(min, max, value) {
 }
 
 const frames = {
-    sleep_still: "frames/sleep_1.webp",
-    sleep_stratch: "frames/sleep_2.webp",
-    awake_yawn: "frames/sleep_3.webp",
-    awake_still: "frames/sleep_4.webp",
+    sleep_still: "files/frames/sleep_1.webp",
+    sleep_stratch: "files/frames/sleep_2.webp",
+    awake_yawn: "files/frames/sleep_3.webp",
+    awake_still: "files/frames/sleep_4.webp",
 }
 
 function switchFrame(frame) {
