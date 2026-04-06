@@ -28,9 +28,31 @@
     scale: 1.01;
 }
 
-body {
-    background: linear-gradient(
-        #ffffff 20%,
-        #5ad0c8 100%
-    );
+.name-card {
+    color: white;
+    background: #53BDA6;
+    text-shadow:
+    2px 0px #202024,
+    -2px 0px #202024,
+    0px -2px #202024,
+    0px 2px #202024,
+    -2px -2px #202024,
+    -2px 2px #202024,
+    2px -2px #202024,
+    2px 2px #202024;
 }
+
+body {
+    background: #1b1919;
+    /* linear-gradient(
+        #100f0f 20%,
+        #53BDA6 100%
+    ); */
+    font-family: "Roboto";
+    color: white;
+}
+
+/*  #53bda6 cyan
+    #202024 black
+    #d0473a red
+ */
