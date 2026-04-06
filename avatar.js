@@ -46,10 +46,10 @@ function switchFrame(frame) {
 function playAvatarAnimationCycle() {
     const SEQUENCE_LIBRARY = {
         SLEEP_LOOP: {
-            duration: 3000,
+            duration: 7000,
             draw (progress) {
                 switchFrame(frames.sleep_still);
-                progress = progress % (1 / 3) * 3;
+                progress = progress % (1 / 7) * 7;
                 progress = easeInOutBack(progress);
                 myavatar.style.scale = (1 + Math.sin(progress * Math.PI) * 0.05) + " " + (1 - Math.sin(progress * Math.PI) * 0.05);
             }
@@ -86,10 +86,10 @@ function playAvatarAnimationCycle() {
             }
         },
         AWAKE_LOOP: {
-            duration: 3000,
+            duration: 4000,
             draw(progress) { // AWAKE LOOP
                 switchFrame(frames.awake_still);
-                progress = progress % (1 / 3) * 3;
+                progress = progress % (1 / 5) * 5;
                 progress = easeInOutBack(progress);
                 myavatar.style.scale = (1 + Math.sin(progress * Math.PI) * 0.05) + " " + (1 - Math.sin(progress * Math.PI) * 0.05);
             }
