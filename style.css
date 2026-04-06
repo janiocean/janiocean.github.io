@@ -18,11 +18,18 @@
     width: 300px;
     margin: 10px;
     right: 30px;
+    filter: drop-shadow(10px 10px 2px #202024);
+    transition: filter 0.1s linear;
+}
+
+#myavatar:hover {
+    filter: drop-shadow(-5px -5px 0px white);
 }
 
 .name-card {
     color: white;
     background: #53BDA6;
+    font-style: italic;
     text-shadow:
     2px 0px #202024,
     -2px 0px #202024,
@@ -32,16 +39,39 @@
     -2px 2px #202024,
     2px -2px #202024,
     2px 2px #202024;
+    box-shadow:
+    20px 5px #d0473a,
+    -10px -7px #ffffff,
+    10px 8px #202024;
+    width: 300px;
+    font-size: 30pt;
+    outline: 4px solid #202024;
+    transition: box-shadow 0.1s ease-in-out,
+    background-color 0.1s ease-in-out,
+    rotate 0.1s ease,
+    scale 0.1s ease-in,
+    outline-width 0.1s ease-in-out;
+}
+
+.name-card:hover {
+    box-shadow:
+    -30px 10px #53BDA6,
+    20px -9px #d0473a,
+    13px 15px #ffffff;
+    background-color: #202024;
+    rotate: 3deg;
+    scale: 1.1;
+    outline-width: 0px;
 }
 
 body {
-    background: #1b1919;
+    background: #302c2c;
     /* linear-gradient(
         #100f0f 20%,
         #53BDA6 100%
     ); */
     font-family: "Roboto";
-    color: white;
+    color: #d0473a;
 }
 
 /*  #53bda6 cyan
