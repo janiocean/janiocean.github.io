@@ -1,15 +1,27 @@
+/* border-radius - IS EASE OUT BACK ANIMATION */
+
 .link-box {
     cursor:pointer;
-    margin: 5px;
-    width: 50px;
-    transition: all 0.2s ease-out;
-    background-color: #ffffff;
-    border-radius: 20px;
+    margin: 10px;
     padding: 10px;
+    width: 50px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    transition:
+    scale 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-radius 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .link-box:hover {
-    transform: scale(1.2) rotate(7deg);
+    scale: 1.2;
+    rotate: 7deg;
+    box-shadow:
+    5px 3px #d0473a,
+    -10px -7px #53BDA6;
+    background: #202024;
+    border-radius: 0px;
 }
 
 #myavatar {
@@ -19,11 +31,11 @@
     margin: 10px;
     right: 30px;
     filter: drop-shadow(10px 10px 2px #202024);
-    transition: filter 0.1s linear;
+    transition: filter 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 #myavatar:hover {
-    filter: drop-shadow(-5px -5px 0px white);
+    filter: drop-shadow(-15px -15px 0px white);
 }
 
 .name-card {
@@ -46,11 +58,9 @@
     width: 300px;
     font-size: 30pt;
     outline: 4px solid #202024;
-    transition: box-shadow 0.1s ease-in-out,
-    background-color 0.1s ease-in-out,
-    rotate 0.1s ease,
-    scale 0.1s ease-in,
-    outline-width 0.1s ease-in-out;
+    transition: box-shadow 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
+    rotate 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
+    scale 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .name-card:hover {
