@@ -209,6 +209,17 @@ a {
     translate: 0px -5px;
 }
 
+.last-update {
+    font-size: small;
+    display: inline;
+    margin: 5px;
+    position: fixed;
+    background-color:#101011;
+    padding: 6px;
+    box-shadow: 5px 3px #d0473a;
+    rotate: 1deg;
+}
+
 body {
     background: #302c2c;
     /* linear-gradient(
