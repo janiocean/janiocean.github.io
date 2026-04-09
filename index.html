@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>:JAN OCEAN</title>
+    <script src="language.js"></script>
     <script src="date.js"></script>
     <script src="avatar.js"></script>
     <script src="sound.js"></script>
@@ -8,13 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="files/title_icon.png">
 </head>
 <body>
     <p id="last_update_label" class="last-update"><b>Последнее обновление было :/</b></p>
     <div align="center">
         <img src="files/frames/sleep_4.webp" id="myavatar">
-        <h1 class="name-card"><img src="files/star.webp" class="star"><b>JAN КАРТА</b> <img src="files/star.webp" class="star"></h1>
+        <h1 class="name-card"><img src="files/star.webp" class="star"><b id="main-card" >JAN КАРТА</b> <img src="files/star.webp" class="star"></h1>
         
+        <a href="#" onclick="setLanguage('en')">English</a>
+        <a href="#" onclick="setLanguage('ru')">Russian</a>
+
+        <div id="div1"></div>
+
+
         <i>
             Чёт честно уже надоело что всё постоянно блокается...
             <br>Проще уже сделать свой сайт и публиковать всё сюда
