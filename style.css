@@ -1,5 +1,10 @@
-/* cubic-bezier(0.34, 1.56, 0.64, 1) - IS EASE OUT BACK ANIMATION */
+:root {
+    --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --red-color: #d0473a;
+    --cyan-color: #53bda6;
+    --black-color: #202024;
 
+}
 
 .star {
     height: 30px;
@@ -18,26 +23,26 @@
 }
 
 a {
-    color:#d0473a;
+    color:var(--red-color);
     text-decoration: none;
 }
 
 .hiding-button-link {
     user-select: none;
     cursor: pointer;
-    background-color: #202024;
+    background-color: var(--black-color);
     /* transform-origin: left; */
     rotate: -25deg;
     display: inline-block;
     margin: 15px;
     transition:
-    scale 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
-    rotate 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-    translate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    scale 0.1s var(--bounce),
+    rotate 0.1s var(--bounce),
+    box-shadow 0.3s var(--bounce),
+    translate 0.4s var(--bounce);
     box-shadow:
-    -3px 6px #d0473a,
-    -2px -4px #53BDA6;
+    -3px 6px var(--red-color),
+    -2px -4px var(--cyan-color);
 }
 
 .hiding-button-link-text {
@@ -49,9 +54,9 @@ a {
     transform: scaleX(0);
     transform-origin: left;
     transition:
-    transform 0.15s cubic-bezier(0.34, 1, 0.64, 1),
-    box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    background-color: #202024;
+    transform 0.15s var(--bounce),
+    box-shadow 0.3s var(--bounce);
+    background-color: var(--black-color);
     box-shadow: 0px 0px #ffffff;
     margin-left: -5px;
     position:absolute;
@@ -73,8 +78,8 @@ a {
     scale: 1.1;
     translate: -60px 0px;
     box-shadow:
-    53px 10px #d0473a,
-    30px -10px #53BDA6;
+    53px 10px var(--red-color),
+    30px -10px var(--cyan-color);
 }
 
 .hiding-button-link:active {
@@ -83,9 +88,9 @@ a {
     }
     .hiding-button-link-text {
         transform: scaleY(0.8);
-        box-shadow: 5px 14px #202024;
+        box-shadow: 5px 14px var(--black-color);
         color: white;
-        background-color: #d0473a;
+        background-color: var(--red-color);
         font-style: normal;
     }
     .icon {
@@ -96,9 +101,9 @@ a {
     scale: 1.15 1;
     translate: -60px 5px;
     box-shadow:
-    220px 2px #53BDA6,
-    240px -2px #202024;
-    background-color: #d0473a;
+    220px 2px var(--cyan-color),
+    240px -2px var(--black-color);
+    background-color: var(--red-color);
 }
 
 .icon {
@@ -107,8 +112,8 @@ a {
     vertical-align: middle;
     rotate: 25deg;
     transition:
-    rotate 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
-    scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    rotate 0.1s var(--bounce),
+    scale 0.5s var(--bounce);
 }
 
 .link-box {
@@ -120,18 +125,18 @@ a {
     border-radius: 5px;
     padding: 10px;
     transition:
-    scale 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-radius 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    scale 0.1s var(--bounce),
+    box-shadow 0.2s var(--bounce),
+    border-radius 0.1s var(--bounce);
 }
 
 .link-box:hover {
     scale: 1.2;
     rotate: 7deg;
     box-shadow:
-    5px 3px #d0473a,
-    -10px -7px #53BDA6;
-    background: #202024;
+    5px 3px var(--red-color),
+    -10px -7px var(--cyan-color);
+    background: var(--black-color);
     border-radius: 0px;
 }
 
@@ -144,7 +149,7 @@ a {
     padding: 10px;
     right: 30px;
     filter: drop-shadow(10px 10px 2px #101011);
-    transition: filter 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: filter 0.1s var(--bounce);
 }
 
 #myavatar:hover {
@@ -156,27 +161,27 @@ a {
     user-select: none;
     cursor: pointer;
     color: white;
-    background: #53BDA6;
+    background: var(--cyan-color);
     font-style: italic;
     text-shadow:
-    2px 0px #202024,
-    -2px 0px #202024,
-    0px -2px #202024,
-    0px 2px #202024,
-    -2px -2px #202024,
-    -2px 2px #202024,
-    2px -2px #202024,
-    2px 2px #202024;
+    2px 0px var(--black-color),
+    -2px 0px var(--black-color),
+    0px -2px var(--black-color),
+    0px 2px var(--black-color),
+    -2px -2px var(--black-color),
+    -2px 2px var(--black-color),
+    2px -2px var(--black-color),
+    2px 2px var(--black-color);
     box-shadow:
-    20px 5px #d0473a,
+    20px 5px var(--red-color),
     -10px -7px #ffffff,
-    10px 8px #202024;
+    10px 8px var(--black-color);
     width: 400px;
     font-size: 30pt;
-    outline: 4px solid #202024;
-    transition: box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-    rotate 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
-    scale 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    outline: 4px solid var(--black-color);
+    transition: box-shadow 0.2s var(--bounce),
+    rotate 0.1s var(--bounce),
+    scale 0.1s var(--bounce);
 }
 
 .name-card:hover {
@@ -184,10 +189,10 @@ a {
         animation-duration: 2s;
     }
     box-shadow:
-    -30px 10px #53BDA6,
-    20px -9px #d0473a,
+    -30px 10px var(--cyan-color),
+    20px -9px var(--red-color),
     13px 15px #ffffff;
-    background-color: #202024;
+    background-color: var(--black-color);
     rotate: 3deg;
     scale: 1.1;
     outline-width: 0px;
@@ -198,11 +203,11 @@ a {
         animation-duration: 0.3s;
     }
     box-shadow:
-    0px 0px #53BDA6,
-    0px 0px #d0473a,
+    0px 0px var(--cyan-color),
+    0px 0px var(--red-color),
     0px 0px #ffffff;
-    background-color: #d0473a;
-    color:#202024;
+    background-color: var(--red-color);
+    color:var(--black-color);
     rotate: -1deg;
     scale: 1.4 0.7;
     outline-width: 0px;
@@ -215,19 +220,19 @@ a {
     margin: 5px;
     background-color:#101011;
     padding: 6px;
-    box-shadow: 5px 3px #d0473a;
+    box-shadow: 5px 3px var(--red-color);
     rotate: 1deg;
 }
 
 #language-switcher {
     cursor: pointer;
-    transition: box-shadow 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
-    background-color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-    color 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
-    scale 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: box-shadow 0.1s var(--bounce),
+    background-color 0.2s var(--bounce),
+    color 0.1s var(--bounce),
+    scale 0.1s var(--bounce);
 }
 #language-switcher:hover {
-    box-shadow: -8px 6px #53BDA6;
+    box-shadow: -8px 6px var(--cyan-color);
     background-color: #ffffff;
     color:#101011;
     scale: 1.1;
@@ -247,15 +252,6 @@ a {
 
 body {
     background: #302c2c;
-    /* linear-gradient(
-        #100f0f 20%,
-        #53BDA6 100%
-    ); */
     font-family: "Inter";
-    color: #d0473a;
+    color: var(--red-color);
 }
-
-/*  #53bda6 cyan
-    #202024 black
-    #d0473a red
- */
