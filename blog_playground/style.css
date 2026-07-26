@@ -1,0 +1,83 @@
+body {
+    background-color: #fdfeff;
+    color: #13100f;
+    font-family: "Inter";
+    margin:0;
+}
+
+header {
+    margin:0px;
+    display: flex;
+    justify-content: center;
+    border-bottom: #13100f solid 5px;
+    position: sticky;
+    top:-63px;
+    background-color: #fdfeff;
+}
+
+header>p{
+    padding:20px;
+    margin:10px;
+    border-top: #13100f dashed 5px;
+    border-bottom: #13100f dashed 5px;
+    /* transition: all 0.1s ease-out; */
+    background-color:#fdfeff;
+    color:#13100f;
+}
+
+header>p:hover{
+    background-color: #13100f;
+    color: #fdfeff;
+    border-top: #fdfeff solid 5px;
+    border-bottom: #fdfeff solid 5px;
+}
+
+#main-central { display: flex; justify-content: center;}
+#right-column #left-column { width: 30ch; }
+#right-column { justify-content: left; }
+#central-column { width: 60ch; border-left: 5px solid #13100f; padding-left:10px;}
+
+#head-space { height: 20ch; background-image: url("filler.webp"); background-position: center; }
+#post-header { background-color: #13100f; color: #fdfeff; padding-left:5px; height:2ch;
+margin-top:0; padding-top: 1ch;}
+#post-list { height: 10ch; position:sticky; top: 5ch; margin-left: 10px;
+border-left: 5px dashed #13100f; padding-left:5px;}
+#post-content {padding-left:0px; margin-top:0;}
+#post-content img {max-width:60ch;}
+
+#post-content>a {
+    background-color: #13100f;
+    color: #fdfeff;
+}
+#post-content>h1 {
+    background-color: #13100f;
+    color: #fdfeff;
+    position: sticky;
+    top: 85px;
+    border-bottom:#fdfeff 5px dashed;
+}
+#post-content>h2 {
+    position: sticky;
+    top: 119px;
+    border-bottom:#13100f 5px dashed;
+    background-color:#fdfeff;
+}
+#post-header {
+    position: sticky;
+    top: 29px;
+    border-bottom:#fdfeff solid 10px;
+    /* width:fit-content; */
+}
+#question {
+    font-size:xx-large;
+    width:28px;
+    height: 28px;
+    padding:20px;
+    background-color: #fdfeff;
+    border:#13100f solid 5px;
+    border-radius:100%;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+}
+/* *{ border: 1px solid rgba(0, 0, 255, 0.144); } */
