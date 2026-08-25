@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Podkova:wght@400..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/*
+Inter
+Jost
+Monsterrat
+Podkova
+Roboto
+Rubik
+Ubuntu Mono так себе(
+*/
+/* * {border: black 1px solid;} */
+:root {
+    --black-color: #333333;
+    --gray-color: #B2B2B2;
+    --white-color: #f7f7f7;
+    --accent-color: #00b39b;
+    --main-font: "Roboto";
+    --h-font: "Inter";
+    --collumn-width: 600px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    font-family: var(--main-font);
+
+    display: flex;
+    flex-direction: column;
+}
+main {flex: 1;}
+
+header {
+    background-color: var(--black-color);
+    color: var(--white-color);
+    height: auto;
+    width: 100%;
+    /* border-bottom: var(--black-color) 3px solid; */
+    display: flexbox;
+    position: fixed;
+    top:0px;
+}
+
+footer {
+    text-align: center;
+    padding-top: 10ch;
+    
+    .dark {
+        background-color: var(--black-color);
+        color: var(--white-color);
+        padding: 2ch;
+    }
+    
+    .pre-footer {
+        --size: 14px;
+        background: var(--black-color);
+        color: var(--white-color);
+        border: var(--black-color) var(--size) solid;
+        border-radius: var(--size);
+        max-width: var(--collumn-width);
+        margin:auto;
+        margin-bottom: calc(-1*var(--size));
+        height: 18ch;
+    }
+}
+
+#post-content {
+    max-width: var(--collumn-width);
+    margin: auto;
+}
+#post-content>p>img { max-width: var(--collumn-width); margin-bottom: 2ch;}
+#post-header {
+    height:300px;
+    width:var(--collumn-width);
+    /* width:calc(50% + var(--collumn-width)/2); */
+    margin:auto;
+    /* background-image:url("../images/filler.webp"); */
+    background-size: 200%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3ch;
+}
+
+#title {
+    color: var(--accent-color);
+    margin:0;
+    margin-top:auto;
+}
+#date {
+    margin:0;
+    margin-top:0.5ch;
+}
+a { 
+    color: var(--accent-color);
+
+    text-decoration: none;
+}
+#blog-list>p>a{
+    padding: 0.5ch;
+    padding-right: 1ch;
+}
+a:hover {
+    background: var(--accent-color);
+    color: var(--white-color);
+}
+.header_holder {
+    max-width: var(--collumn-width);
+    margin: auto;
+
+    a {color: var(--white-color); padding:1ch; margin: 1.3ch; padding:0.7ch; width:fit-content; font-size:large;}
+    a:hover {background-color: var(--white-color); color: var(--black-color);}
+}
+em{ color: var(--gray-color); }
+code{ background-color: var(--black-color); color: var(--white-color);
+display:flex; padding:10px;}
+
+.center-image {
+    display:block;
+    margin:auto;
+}
+
+h1, #title { font-family: var(--h-font);}
+
+article>h1, #title{
+    border-bottom: var(--accent-color) 3px solid;
+}
+
+span {
+    float: right;
+    clear: right;
+    width: 220px;
+    margin-right: -250px;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--gray-color);
+    border-left: var(--gray-color) 2px solid;
+}
+
+i {
+    color: var(--gray-color);
+}
+
+blockquote {
+    font-style: italic;
+    color: var(--gray-color);
+    font-size: large;
+}
+
+/* p {
+    text-indent: 1ch;
+} */
+
+#telergram {
+    width: 70px;
+    display: flex;
+    align-items: center;
+}
+
+#telegram>img {
+    width: 50px;
+    margin: 10px;
+    filter: invert(77%) sepia(0%) saturate(1440%) hue-rotate(218deg) brightness(109%) contrast(59%);
+    rotate: -5deg;
+    transition: all 0.1s ease-out;
+}
+#telegram>img:hover {
+    width: 60px;
+    margin: 5px;
+    filter: invert(0%) sepia(2%) saturate(95%) hue-rotate(9deg) brightness(113%) contrast(94%);
+    rotate: 1deg;
+
+}
+
+#telegram:hover {
+    background-color: var(--black-color);
+}
+
+@view-transition {
+    navigation: auto;
+}

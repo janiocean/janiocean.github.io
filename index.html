@@ -1,61 +1,67 @@
 <!DOCTYPE html>
-<head>
-    <title>:JAN OCEAN</title>
-    <script src="language.js"></script>
-    <script src="date.js"></script>
-    <script src="avatar.js"></script>
-    <script src="sound.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="image/x-icon" href="files/title_icon.png">
-</head>
-<body>
-    <div class="upper-roof">
-        <p id="last_update_label" class="title-box"><b>Последнее обновление было :/</b></p>
-        <div onclick="switchLanguage()" id="language-switcher" class="title-box">ENGLISH</div>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   :JAN OCEAN
+  </title>
+  <meta content="https://janiocean.github.io/" property="og:url"/>
+  <meta content="blog" property="og:type"/>
+  <meta content=":JAN OCEAN" property="og:site_name"/>
+  <meta content=":JAN OCEAN" property="og:title"/>
+  <meta content="Персональный сайт" property="og:description"/>
+  <meta content="https://janiocean.github.io/media/images/blog_menu_writing_avatar.webp" property="og:image"/>
+  <link href="media/images/page_title_icon.png" rel="icon" type="image/x-icon"/>
+  <link href="media/styles/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- HEADER -->
+  <header>
+   <div class="header_holder">
+    <p>
+     <a href="/">
+      Главная
+     </a>
+    </p>
+   </div>
+  </header>
+  <!-- MAIN -->
+  <main>
+   <article id="post-content">
+    <img class="center-image" src="media/images/blog_menu_writing_avatar.webp" style="margin-top: 150px" width="400px"/>
+    <h1>
+     Это мой список штук которые я уже успел написать
+    </h1>
+    <div id="blog-list">
+     <p>
+      2026/08/25
+      <i>
+       (7 минут)
+      </i>
+      <a href="blogs/first-blog-note.html">
+       Первый в жизни блог. Что зачем и почему
+      </a>
+     </p>
     </div>
-    <div align="center">
-        <img src="files/frames/sleep_4.webp" id="myavatar">
-        <h1 class="name-card"><img src="files/star.webp" class="star"><b id="main-card" >JAN КАРТА</b> <img src="files/star.webp" class="star"></h1>
-
-        <div id="div1"></div>
-
-
-        <i>
-            Чёт честно уже надоело что всё постоянно блокается...
-            <br>Проще уже сделать свой сайт и публиковать всё сюда
-            <br>
-            <br>Я давно хотел сделать сайт карточку, на которой бы публиковал проекты,
-            <br>посты, моменты из жизни, а-ля вести блог
-            <br>
-            <br>Долго откладывал всё это дело, но уже и пора всё же попробовать
-            <br>
-            <br>Очень хочу научиться работать с трио HTML, CSS, JS и сделать
-            <br>действительно крутую веб-карточку
-            <br>
-            <br>Следите за сайтиком, никуда меня не теряйте. Соц-сети буду продолжать вести
-            <br>Никаких закрытий вам. Всё есть и будет
-            <br>
-        </i>
-        <h2>Там, где я обитаю:</h2>
-        <a href="https://t.me/janiocean" target="_blank" rel="noopener noreferrer" class="hiding-button-link">
-            <img src="files/telegram.webp" class="icon"><span class="hiding-button-link-text"><img src="files/star.webp" class="star">TELEGRAM</span>
-        </a>
-        <br>
-        <a href="https://www.youtube.com/@JanArt" target="_blank" rel="noopener noreferrer" class="hiding-button-link">
-            <img src="files/youtube.webp" class="icon"><span class="hiding-button-link-text"><img src="files/star.webp" class="star"> YOUTUBE</span>
-        </a>   
-        <br><br>
-        <br>Если уж СОВСЕМ ВСЁ ПЛОХО БУДЕТ, этот сайт всё равно будет жить
-        <br>
-        <br>Боитесь потерять ссылку?
-        <br>Держите любовное письмо, написанное от цифровой руки
-        <br>
-        <a href="files/letter from jan.txt" download="letter from jan.txt" class="hiding-button-link">
-            <img src="files/letter.webp" class="icon"><span class="hiding-button-link-text"><img src="files/star.webp" class="star"> LETTER</span>
-        </a>  
-        <div style="height: 300px"></div>
+   </article>
+   <div style="margin: 10%">
+   </div>
+  </main>
+  <!-- FOOTER -->
+  <footer>
+   <div class="pre-footer">
+    <div style="display: flexbox; padding: 80px; font-size: xx-large">
+     <img src="../media/images/circle.webp" width="60px"/>
+     ______________
+     <img src="../media/images/circle.webp" width="60px"/>
     </div>
-</body>
+   </div>
+   <div class="dark">
+    <a href="https://t.me/janiocean" id="telegram" target="_blank">
+     <img src="media/images/telegram icon.svg"/>
+    </a>
+   </div>
+  </footer>
+ </body>
+</html>
